@@ -1,0 +1,6 @@
+# Project exclude paths
+/my_component/frontend/node_modules/
+/venv
+/my_component/frontend/.idea
+/my_component/.idea
+.idea
