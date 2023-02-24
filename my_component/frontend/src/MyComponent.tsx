@@ -1,5 +1,5 @@
 import { Streamlit } from "streamlit-component-lib"
-import { useRenderData } from "streamlit-component-lib-react-hooks"
+// import { useRenderData } from "streamlit-component-lib-react-hooks"
 import React, { useState, useCallback } from "react"
 
 /**
