@@ -84,22 +84,21 @@ def my_component(name, key=None):
 if not _RELEASE:
     import streamlit as st
 
-    # Create a second instance of our component whose `name` arg will vary
-    # based on a text_input widget.
+    # my_path = os.path.abspath(os.path.dirname(__file__))
+    # original_img_path = os.path.join(my_path, "frontend", "public", "orig.jpeg")
     #
-    # We use the special "key" argument to assign a fixed identity to this
-    # component instance. By default, when a component's arguments change,
-    # it is considered a new instance and will be re-mounted on the frontend
-    # and lose its current state. In this case, we want to vary the component's
-    # "name" argument without having it get recreated.
-    name_input = st.text_input("Enter a name", value="Streamlit")
-    num_clicks = my_component(name_input, key="foo")
-    st.markdown("You've clicked %s times!" % int(num_clicks))
+    #
+    #
+    # # streamlit image upload
+    # uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg"])
+    #
+    # if uploaded_file is not None:
+    #     # display image in streamlit
+    #     image = Image.open(uploaded_file)
+    #     image.save(original_img_path)
+    #     st.image(image, caption='Uploaded Image.', use_column_width=True)
 
-    # streamlit image upload
-    uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg"])
+        # my_component(name="test", key="foo")
 
-    if uploaded_file is not None:
-        # display image in streamlit
-        image = Image.open(uploaded_file)
-        st.image(image, caption='Uploaded Image.', use_column_width=True)
+    num_clicks = my_component("j", key="foo")
+
