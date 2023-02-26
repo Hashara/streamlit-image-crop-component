@@ -1,5 +1,6 @@
 import os
 import streamlit.components.v1 as components
+from PIL import Image
 
 # Create a _RELEASE constant. We'll set this to False while we're developing
 # the component, and True when we're ready to package and distribute it.
@@ -83,16 +84,6 @@ def my_component(name, key=None):
 if not _RELEASE:
     import streamlit as st
 
-    st.subheader("Component with constant args")
-
-    # Create an instance of our component with a constant `name` arg, and
-    # print its output value.
-    num_clicks = my_component("World")
-    st.markdown("You've clicked %s times!" % int(num_clicks))
-
-    st.markdown("---")
-    st.subheader("Component with variable args")
-
     # Create a second instance of our component whose `name` arg will vary
     # based on a text_input widget.
     #
@@ -104,3 +95,11 @@ if not _RELEASE:
     name_input = st.text_input("Enter a name", value="Streamlit")
     num_clicks = my_component(name_input, key="foo")
     st.markdown("You've clicked %s times!" % int(num_clicks))
+
+    # streamlit image upload
+    uploaded_file = st.file_uploader("Choose an image...", type=["png", "jpg", "jpeg"])
+
+    if uploaded_file is not None:
+        # display image in streamlit
+        image = Image.open(uploaded_file)
+        st.image(image, caption='Uploaded Image.', use_column_width=True)
