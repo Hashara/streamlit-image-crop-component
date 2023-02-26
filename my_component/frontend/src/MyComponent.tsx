@@ -56,7 +56,6 @@ class MyComponent extends StreamlitComponentBase {
             // classes={{ container: 'slider' }}
           />
         </div>
-        <h1>Hello</h1>
       </div>
     )
   }
