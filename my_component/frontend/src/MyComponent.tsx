@@ -93,6 +93,22 @@ class MyComponent extends StreamlitComponentBase<State> {
   }
 
 
+  handleDownload = async () => {
+    const imgUrl = this.state.croppedImage; // replace with your image URL
+
+    if (imgUrl != null) {
+      const imgResponse = await fetch(imgUrl);
+      const imgBlob = await imgResponse.blob();
+      const downloadLink = document.createElement('a');
+      downloadLink.href = URL.createObjectURL(imgBlob);
+      downloadLink.download = 'image.jpg';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+
+  }
+
 
   render() {
     return (
@@ -147,7 +163,7 @@ class MyComponent extends StreamlitComponentBase<State> {
                   </Button>
 
                   <Button
-                    onClick={this.onClose}
+                    onClick={this.handleDownload}
                     variant="contained"
                     color="primary"
                     className="cropButton"
