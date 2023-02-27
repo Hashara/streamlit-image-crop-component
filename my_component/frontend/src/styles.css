@@ -35,3 +35,8 @@ body {
 .slider {
   padding: 22px 0px;
 }
+
+.cropButton {
+  flexShrink: 0;
+  marginLeft: 16;
+}
