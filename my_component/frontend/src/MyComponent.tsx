@@ -175,7 +175,7 @@ class MyComponent extends StreamlitComponentBase<State> {
 
               </>
             ) : (
-              <h1>hi</h1>
+              <p>Cropped image will appear here</p>
             )}
 
           </React.Fragment>
