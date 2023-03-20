@@ -40,3 +40,7 @@ body {
   flexShrink: 0;
   marginLeft: 16;
 }
+
+.row{
+  margin-bottom: 5px;
+}
