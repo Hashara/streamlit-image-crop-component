@@ -28,7 +28,7 @@ class MyComponent extends StreamlitComponentBase<State> {
     imageSrc: null,
     crop: { x: 0, y: 0 },
     zoom: 1,
-    aspect: 4 / 3,
+    aspect: 1 / 1,
     croppedAreaPixels: null,
     rotation: 0,
     croppedImage: null,
@@ -44,11 +44,30 @@ class MyComponent extends StreamlitComponentBase<State> {
     this.setCroppedAreaPixels(croppedAreaPixels)
   }
 
-  onZoomChange = (zoom: number ) => {
-    this.setState({ zoom })
+  onZoomChange = (zoom: any ) => {
+    // this.setState({ zoom })
+    if (Array.isArray(zoom)) {
+      this.setState({ zoom: zoom[0] });
+    } else {
+      this.setState({ zoom });
+    }
   }
 
   setImageSrc = (newImageSrc: any) => {
+    const frameSize = 75; // the size of the frame you want to add
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width + frameSize * 2;
+      canvas.height = img.height + frameSize * 2;
+      const ctx = canvas.getContext('2d')!;
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, frameSize, frameSize);
+      const newDataUrl = canvas.toDataURL();
+      this.setState({ imageSrc: newDataUrl });
+    };
+    img.src = newImageSrc;
     this.setState({ imageSrc: newImageSrc })
   }
 
@@ -128,17 +147,17 @@ class MyComponent extends StreamlitComponentBase<State> {
                 onZoomChange={this.onZoomChange}
               />
             </div>
-            {/*<div className="controls">*/}
-            {/*  <Slider*/}
-            {/*    value={this.state.zoom}*/}
-            {/*    min={1}*/}
-            {/*    max={3}*/}
-            {/*    step={0.1}*/}
-            {/*    aria-labelledby="Zoom"*/}
-            {/*    onChange={(e, zoom) => this.onZoomChange(this.state.zoom)}*/}
-            {/*    className = "slider"*/}
-            {/*  />*/}
-            {/*</div>*/}
+            <div className="controls">
+              <Slider
+                value={this.state.zoom}
+                min={1}
+                max={3}
+                step={0.1}
+                aria-labelledby="Zoom"
+                onChange={(e, zoom) => this.onZoomChange(zoom)}
+                className = "slider"
+              />
+            </div>
             <Button
               onClick={this.showCroppedImage}
               variant="contained"
@@ -152,30 +171,46 @@ class MyComponent extends StreamlitComponentBase<State> {
               <>
                 <h1> Preview </h1>
                 <div className="container">
-                  <img src={this.state.croppedImage} alt="Cropped" height="100px" />
-                  <Button
-                    onClick={this.onClose}
-                    variant="contained"
-                    color="primary"
-                    className="cropButton"
-                  >
-                    Close
-                  </Button>
+                  <div className="row">
+                    <img src={this.state.croppedImage} alt="Cropped" height="300px"/>
+                  </div>
+                  <div className="row">
+                    <div className="col-4">
 
-                  <Button
-                    onClick={this.handleDownload}
-                    variant="contained"
-                    color="primary"
-                    className="cropButton"
-                  >
-                    Download Image
-                  </Button>
+                    </div>
+
+                    <div className="col-4">
+                      <Button
+                        onClick={this.onClose}
+                        variant="contained"
+                        color="primary"
+                        className="cropButton"
+                      >
+                        Close
+                      </Button>
+                    </div>
+
+                    <div className="col-4">
+
+                      <Button
+                        onClick={this.handleDownload}
+                        variant="contained"
+                        color="primary"
+                        className="cropButton"
+                      >
+                        Download
+                      </Button>
+                    </div>
+
+
+                  </div>
+
                 </div>
 
 
               </>
             ) : (
-              <h1>hi</h1>
+              <p>Cropped image will appear here</p>
             )}
 
           </React.Fragment>
