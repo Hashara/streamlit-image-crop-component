@@ -23,7 +23,7 @@ interface State {
   croppedImage: string | null
 }
 
-class MyComponent extends StreamlitComponentBase<State> {
+class ImageCropComponent extends StreamlitComponentBase<State> {
   state = {
     imageSrc: null,
     crop: { x: 0, y: 0 },
@@ -232,4 +232,4 @@ function readFile(file: any) {
   })
 }
 
-export default withStreamlitConnection(MyComponent)
+export default withStreamlitConnection(ImageCropComponent)

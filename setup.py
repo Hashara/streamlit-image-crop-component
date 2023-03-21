@@ -1,12 +1,12 @@
 import setuptools
 
 setuptools.setup(
-    name="streamlit-custom-component",
+    name="streamlit-image-crop-component",
     version="0.0.1",
-    author="",
-    author_email="",
-    description="",
-    long_description="",
+    author="Hashara Kumarasinghe",
+    author_email="kumarasinghe.k.a.s.h@gmail.com",
+    description="image crop component for streamlit",
+    long_description="This component is used to crop images in streamlit",
     long_description_content_type="text/plain",
     url="",
     packages=setuptools.find_packages(),
