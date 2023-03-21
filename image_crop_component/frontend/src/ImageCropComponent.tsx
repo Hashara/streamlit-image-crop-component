@@ -5,12 +5,9 @@ import {
   ComponentProps,
 } from "streamlit-component-lib"
 import React, { useCallback } from "react"
-import ReactDOM from "react-dom"
 import Slider from "@material-ui/core/Slider"
 import Cropper from "react-easy-crop"
 import "./styles.css"
-import { getOrientation } from "get-orientation/browser"
-import * as events from "events"
 import Button from "@material-ui/core/Button"
 import { getCroppedImg, getRotatedImage } from "./canvasUtil.js"
 

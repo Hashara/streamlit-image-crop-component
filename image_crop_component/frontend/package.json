@@ -13,7 +13,6 @@
     "get-orientation": "^1.1.2",
     "jquery": "^3.6.3",
     "react": "^16.13.1",
-    "react-croppie": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-easy-crop": "^4.7.3",
     "react-scripts": "4.0.3",
