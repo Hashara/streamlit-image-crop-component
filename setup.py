@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="streamlit-image-crop-component",
-    version="0.0.1",
+    version="0.0.2",
     author="Hashara Kumarasinghe",
     author_email="kumarasinghe.k.a.s.h@gmail.com",
     description="image crop component for streamlit",
