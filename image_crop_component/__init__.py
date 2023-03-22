@@ -6,7 +6,7 @@ from PIL import Image
 # the component, and True when we're ready to package and distribute it.
 # (This is, of course, optional - there are innumerable ways to manage your
 # release process.)
-_RELEASE = False
+_RELEASE = True
 
 # Declare a Streamlit component. `declare_component` returns a function
 # that is used to create instances of the component. We're naming this
@@ -44,7 +44,7 @@ else:
 # `declare_component` and call it done. The wrapper allows us to customize
 # our component's API: we can pre-process its input args, post-process its
 # output value, and add a docstring for users.
-def my_component(name, key=None):
+def image_crop_component(name, key=None):
     """Create a new instance of "image_crop_component".
 
     Parameters
@@ -100,5 +100,5 @@ if not _RELEASE:
 
         # image_crop_component(name="test", key="foo")
 
-    num_clicks = my_component("j", key="foo")
+    image_crop_component("j", key="foo")
 
