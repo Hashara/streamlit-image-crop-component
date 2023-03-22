@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 500px;
+}
+
+.crop-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+  height: 90%;
+}
+
+.controls {
+  position: relative;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  transform: translateX(-50%);
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  padding: 22px 0px;
+}
+
+.cropButton {
+  flexShrink: 0;
+  marginLeft: 16;
+}
+
+.row{
+  margin-bottom: 5px;
+}
